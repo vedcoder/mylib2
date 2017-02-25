@@ -20,16 +20,25 @@ a {
 }
 
 
-.section-books{
+.section-device {
   float: right;
   position: relative;
   top: 65px;
 }
 
-.section-books img {
-  width: 600px;
+.section-device img {
+  width: 340px;
 }
 
+.section-device2 {
+  float: left;
+  position: relative;
+  top: 65px;
+}
+
+.section-device2 img {
+  width: 300px;
+}
 
 .btn-primary {
   background: blue;
