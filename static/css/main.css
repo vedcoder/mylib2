@@ -18,6 +18,19 @@ a {
   text-decoration: none;
   display: inline-block;
 }
+
+
+.section-books{
+  float: right;
+  position: relative;
+  top: 65px;
+}
+
+.section-books img {
+  width: 600px;
+}
+
+
 .btn-primary {
   background: blue;
   border: 3px solid green;
