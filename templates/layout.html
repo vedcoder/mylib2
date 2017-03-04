@@ -11,7 +11,18 @@
         <h1 class="title">Vidit's books</h1>
       </div>
     </header>
-
+    <div class="section-content">
+      <h2>Discover new books now.</h2>
+      <a href="{{ url_for('books') }}" class="btn">About My books</a>
+      <a href="{{ url_for('index') }}" class="btn">Home</a>
+      {% if session['email'] %}
+        <a href="/logout" class="btn">Logout</a>
+        <a href="{{ url_for('account') }}" class="btn">My account</a>
+      {% else %}
+        <a href="{{ url_for('signup') }}" class="btn">Sign up</a>
+        <a href="{{ url_for('login') }}" class="btn">Login</a>
+      {% endif %}
+    </div>
     {% block content %}
     {% endblock %}
 

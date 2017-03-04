@@ -40,22 +40,8 @@ a {
   width: 300px;
 }
 
-.btn-primary {
-  background: blue;
-  border: 3px solid green;
-  color: gold;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  letter-spacing: 0.23px;
-  padding: 12px 32px;
-  text-align: center;
-  text-decoration: none;
-  text-transform: uppercase;
-}
-
-.btn-secondary {
-  background: gold;
+.btn {
+  background-color: black;
   border: 3px solid blue;
   color: yellowgreen;
   font-family: 'Open Sans', sans-serif;
