@@ -1,0 +1,11 @@
+.hero-section .section-content {
+  position: relative;
+  top: 100px;
+}
+
+.hero-section .section-content h2 {
+  font-size: 40px;
+}
+
+.hero-section .section-content .btn-primary {
+  margin-right: 10px;
