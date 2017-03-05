@@ -16,7 +16,7 @@
 }
 
 .form-group label {
-  color: #3a3a3a;
+  color: #d43e22;
   display: block;
   font-family: 'Open Sans', sans-serif;
   font-size: 15px;
@@ -27,8 +27,8 @@
 .form-group input {
   border: none;
   border-bottom: 2px solid #4285f4;
-  background-color: transparent;
-  color: #3a3a3a;
+  background-color:aqua;
+  color: #d43e22;
   font-size: 18px;
   padding: 5px 0;
   width: 100%;

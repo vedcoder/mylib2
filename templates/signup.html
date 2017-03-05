@@ -2,12 +2,10 @@
 
 {% block content %}
   <main class="container signup-section">
-    <div class="section-content">
-      <h2>Create an account</h2>
-
+    <h3>Create an account</h3>
+    <div class="section-form">
       <form method="POST" action="/signup">
         {{ form.hidden_tag() }}
-
         <div class="form-group">
           {{ form.first_name.label }}
 

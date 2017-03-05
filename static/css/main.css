@@ -1,6 +1,9 @@
 html, body, h1 {
   margin: 0;
   padding: 0;
+  text-align: center;
+  background-color: darkblue;
+  color: lightblue;
 }
 
 body {
@@ -12,32 +15,31 @@ h2 {
 
   font-weight: 300;
   letter-spacing: -1.2px;
+  text-align: center;
+  width: 1304px;
+  color: lightblue;
+  background-color: lightseagreen;
+  text-decoration: underline;
 }
 
-a {
-  text-decoration: none;
-  display: inline-block;
+nav {
+  background-color: #003A65;
+  height: 57px;
 }
 
-
-.section-device {
+nav ul {
   float: right;
-  position: relative;
-  top: 65px;
 }
 
-.section-device img {
-  width: 340px;
+nav ul li {
+  float: right;
+  list-style-type: none;
+  padding-right: 77px;
 }
 
-.section-device2 {
-  float: left;
-  position: relative;
-  top: 65px;
-}
-
-.section-device2 img {
-  width: 300px;
+nav ul li a {
+  font-family: fantasy;
+  color: mediumspringgreen;
 }
 
 .btn {
@@ -54,13 +56,14 @@ a {
   text-transform: uppercase;
 }
 
-.container {
+.header {
   width: 1000px;
   margin: 0 auto;
 }
 
-.section-content {
+.section-form {
   color: #3a3a3a;
   float: left;
   width: 340px;
+  margin-left: 480px;
 }
