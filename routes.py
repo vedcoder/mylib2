@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from model import db, User
-from forms import SignupForm, LoginForm
+from forms import SignupForm, LoginForm, NewBookForm
 
 
 app = Flask(__name__)
@@ -55,6 +55,9 @@ def login():
       user = User.query.filter_by(email=email).first()
       if user is not None and user.check_password(password):
         session['email'] = form.email.data
+        session['fname'] = firstname
+        session['lname'] = lastname
+
         return redirect(url_for('account'))
       else:
         return redirect(url_for('login'))
@@ -73,6 +76,17 @@ def account():
       return redirect (url_for("login"))
   return render_template("account.html")
 
+@app.route("/newbook",methods=["GET", "POST"])
+def newbook():
+    form = NewBookForm()
+
+    if request.method == "POST":
+        if form.validate() == False:
+            return render_template("newbook.html", form=form)
+        else:
+            return("Thank You!!")
+    elif request.method == "GET":
+        return render_template("newbook.html",form=form)
 
 if __name__ == "__main__":
   app.run(debug=True)

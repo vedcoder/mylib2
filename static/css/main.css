@@ -7,19 +7,24 @@ html, body, h1 {
 }
 
 body {
-  background-color: greenyellow;
   font-family: 'Open Sans', sans-serif;
 }
 
-h2 {
+.discover{
 
-  font-weight: 300;
-  letter-spacing: -1.2px;
+  font-size: 30px;
+  letter-spacing: 13.8px;
   text-align: center;
-  width: 1304px;
   color: lightblue;
-  background-color: lightseagreen;
-  text-decoration: underline;
+}
+.welcome{
+  float: right;
+  font-size:18px;
+  letter-spacing:-1.2px;
+  text-align: center;
+  color: lightblue;
+  margin-left: 9px;
+
 }
 
 nav {

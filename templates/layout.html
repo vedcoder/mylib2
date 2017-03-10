@@ -10,7 +10,12 @@
         <h1 class="title">Vidit's books</h1>
     </header>
     <div class="sub-header">
-      <h2>Discover new books.</h2>
+      <span class="discover">Discover new books.</span>
+      {% if session['email']%}
+        <span class="welcome">{{session['fname']}} {{session['lname']}}</span>
+        <span class="welcome">Welcome</span>
+      {% endif %}
+
     </div>
     <nav>
       <ul>
@@ -19,6 +24,7 @@
         {% if session['email'] %}
           <li><a href="/logout" class="btn">Logout</a></li>
           <li><a href="{{ url_for('account') }}" class="btn">My account</a></li>
+          <li><a href="{{ url_for('newbook') }}" class="btn">add book</a></li>
         {% else %}
           <li><a href="{{ url_for('signup') }}" class="btn">Sign up</a></li>
           <li><a href="{{ url_for('login') }}" class="btn">Login</a></li>
