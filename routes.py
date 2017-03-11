@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-from model import db, User
+from model import db, User, Book
 from forms import SignupForm, LoginForm, NewBookForm
 
 
@@ -84,7 +84,10 @@ def newbook():
         if form.validate() == False:
             return render_template("newbook.html", form=form)
         else:
-            return("Thank You!!")
+            newbook = Book(form.name.data, form.author.data, form.story.data, form.price.data, form.link.data)
+            db.session.add(newbook)
+            db.session.commit()
+            return redirect(url_for('books'))
     elif request.method == "GET":
         return render_template("newbook.html",form=form)
 

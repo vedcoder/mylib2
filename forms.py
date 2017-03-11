@@ -19,8 +19,6 @@ class NewBookForm(Form):
     name = StringField('name',validators=[DataRequired("Please enter the name of the book")])
     author = StringField('author',validators=[DataRequired("Please enter the author of the book ")])
     story = StringField('Story line',validators=[DataRequired("Please enter the storyline of the book")])
-    price = StringField('price',validators=[DataRequired("Please enter the price of the book")])
     link = StringField('link for amazon website',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
-    myChoices=[('read', 'read'), ('not read', 'not read'), ('in progress', 'in progress')]
-    status = SelectField('status', choices = myChoices, validators=[DataRequired("Please enter the choice that you have read it or not")])
+    price = StringField('price',validators=[DataRequired("Please enter the price of the book")])
     submit = SubmitField('add')

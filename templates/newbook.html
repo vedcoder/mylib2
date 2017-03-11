@@ -64,18 +64,6 @@
         {{ form.link }}
       </div>
 
-      <div class="form-group">
-        {{ form.status.label }}
-
-        {% if form.status.errors %}
-          {% for error in form.status.errors %}
-            <p class="error-message">{{ error }}</p>
-          {% endfor %}
-        {% endif %}
-
-        {{ form.status }}
-      </div>
-    
       {{ form.submit(class="btn-primary") }}
     </form>
   </div>

@@ -6,10 +6,10 @@ db = SQLAlchemy()
 class User(db.Model):
   __tablename__ = 'users'
   id = db.Column(db.Integer, primary_key = True)
-  firstname = db.Column(db.String(100))
-  lastname = db.Column(db.String(100))
+  firstname = db.Column(db.String(50))
+  lastname = db.Column(db.String(400))
   email = db.Column(db.String(120), unique=True)
-  pwdhash = db.Column(db.String(54))
+  pwdhash = db.Column(db.String(180))
 
   def __init__(self, firstname, lastname, email, password):
     self.firstname = firstname.title()
@@ -22,3 +22,19 @@ class User(db.Model):
 
   def check_password(self, password):
     return check_password_hash(self.pwdhash, password)
+
+class Book(db.Model):
+  __tablename__ = 'books'
+  id = db.Column(db.Integer, primary_key = True)
+  name = db.Column(db.String(50))
+  author = db.Column(db.String(50))
+  story = db.Column(db.String(100))
+  price = db.Column(db.Numeric(precision=5, scale=2))
+  link = db.Column(db.String(400))
+
+  def __init__(self, name, author, story, price, link ):
+    self.name = name
+    self.author = author
+    self.story = story
+    self.price = price
+    self.link = link
