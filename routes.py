@@ -17,7 +17,8 @@ def index():
 
 @app.route("/books")
 def books():
-  return render_template("books.html")
+  books = db.session.query(Book).all()
+  return render_template("books.html",books=books)
 
 @app.route("/signup", methods=["GET", "POST"])
 def signup():
@@ -55,8 +56,8 @@ def login():
       user = User.query.filter_by(email=email).first()
       if user is not None and user.check_password(password):
         session['email'] = form.email.data
-        session['fname'] = firstname
-        session['lname'] = lastname
+        session['fname'] = user.firstname
+        session['lname'] = user.lastname
 
         return redirect(url_for('account'))
       else:
