@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <div class="container">
+  <div class="container">
 
     <h2>Abouts my books</h2>
     <p>I have lots of books.Some comic's and some are knowledge ones.I have almost read every book I have.</p>
@@ -9,13 +9,31 @@
       {% for book in books %}
         <div class="book">
           <p1>{{ book.name }}</p1>
-          <p2>{{ book.author }}</p2>
-          <p3>{{ book.story }}</p3>
-          <p4>{{ book.price }}</p4>
-          <p5>{{ book.link }}</p5>
         </div>
+
+
+        <div class="book">
+          <p2>{{ book.author }}</p2>
+        </div>
+
+
+        <div class="book">
+          <p3>{{ book.story }}</p3>
+        </div>
+
+
+        <div class="book">
+          <p4>{{ book.price }}</p4>
+        </div>
+
+
+        <div class="boo">
+          <a href="{{ book.link }}" target="_blank">Go to amazon </a>
+        </div>
+
+
       {% endfor %}
     </div>
 
-    </div>
+  </div>
 {% endblock %}

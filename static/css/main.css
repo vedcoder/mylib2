@@ -72,3 +72,15 @@ nav ul li a {
   width: 340px;
   margin-left: 480px;
 }
+
+.book {
+  color: #3a3a3a;
+  background-color: blue;
+  font-family: 'cursive','fantasy';
+}
+
+.book   {
+  color: #3a3a3a;
+  background-color: blue;
+  font-family: 'cursive','fantasy';
+}
