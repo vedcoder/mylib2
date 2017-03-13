@@ -1,41 +1,29 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="{{ url_for('static', filename='css/signup.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <header>
-        <h1>Vidit's books</h1>
-    </header>
-    <div>
-      <span>Discover new books.</span>
-      {% if session['email']%}
-        <span>{{session['fname']}} {{session['lname']}}</span>
-        <span>Welcome</span>
-      {% endif %}
-
-    </div>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="{{ url_for('index') }}">home</a>
+          <a class="navbar-brand" href="{{ url_for('index') }}"><span class="glyphicon glyphicon-home"></span> Home</a>
         </div>
 
         <ul class="nav navbar-nav">
-          <li><a href="{{ url_for('books') }}" class="btn">About My books</a></li>
+          <li><a href="{{ url_for('books') }}"><span class="glyphicon glyphicon-book"></span> Books</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {% if session['email'] %}
-            <li><a href="/logout" class="btn">Logout</a></li>
-            <li><a href="{{ url_for('account') }}">My account</a></li>
-            <li><a href="{{ url_for('newbook') }}">Add book</a></li>
+            <li><a href="{{ url_for('newbook') }}"><span class="glyphicon glyphicon-book"></span> Add book</a></li>
+            <li><a href="{{ url_for('account') }}"><span class="glyphicon glyphicon-user"></span> My account</a></li>
+            <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           {% else %}
-             <li><a href="{{ url_for('signup') }}">Sign up</a></li>
-             <li><a href="{{ url_for('login') }}">Login</a></li>
+             <li><a href="{{ url_for('signup') }}"><span class="glyphicon glyphicon-user"></span> Sign up</a></li>
+             <li><a href="{{ url_for('login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           {% endif %}
         </ul>
       </div>

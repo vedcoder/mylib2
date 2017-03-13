@@ -2,11 +2,10 @@
 {% block content %}
   <h1>Insert a book</h1>
   <div class="section-form">
-    <form method="POST" action="/newbook">
+    <form method="POST" action="/newbook" class="form-horizontal">
       {{ form.hidden_tag() }}
       <div class="form-group">
-        {{ form.name.label }}
-
+        <label class="control-label col-sm-2" for="email">{{ form.name.label }}</label>
         {% if form.name.errors %}
           {% for error in form.name.errors %}
             <p class="error-message">{{ error }}</p>
@@ -17,8 +16,7 @@
       </div>
 
       <div class="form-group">
-        {{ form.author.label }}
-
+        <label class="control-label col-sm-2" for="email">{{ form.author.label }}</label>
         {% if form.author.errors %}
           {% for error in form.author.errors %}
             <p class="error-message">{{ error }}</p>
@@ -29,8 +27,7 @@
       </div>
 
       <div class="form-group">
-        {{ form.story.label }}
-
+        <label class="control-label col-sm-2" for="email">{{ form.story.label }}</label>
         {% if form.story.errors %}
           {% for error in form.story.errors %}
             <p class="error-message">{{ error }}</p>
@@ -41,8 +38,7 @@
       </div>
 
       <div class="form-group">
-        {{ form.price.label }}
-
+        <label class="control-label col-sm-2" for="email">{{ form.price.label }}</label>
         {% if form.price.errors %}
           {% for error in form.price.errors %}
             <p class="error-message">{{ error }}</p>
@@ -52,8 +48,7 @@
         {{ form.price }}
       </div>
       <div class="form-group">
-        {{ form.link.label }}
-
+        <label class="control-label col-sm-2" for="email">{{ form.link.label }}</label>
         {% if form.link.errors %}
           {% for error in form.link.errors %}
             <p class="error-message">{{ error }}</p>
@@ -63,7 +58,8 @@
         {{ form.link }}
       </div>
 
-      {{ form.submit(class="btn-primary") }}
-    </form>
+      <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">Submit</button>
+      </div>
   </div>
 {% endblock %}
