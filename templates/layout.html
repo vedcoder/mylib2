@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/signup.css') }}" rel="stylesheet">
-    <link href="{{ url_for('static', filename='css/hero.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
     <header>
-        <h1 class="title">Vidit's books</h1>
+        <h1>Vidit's books</h1>
     </header>
-    <div class="sub-header">
-      <span class="discover">Discover new books.</span>
+    <div>
+      <span>Discover new books.</span>
       {% if session['email']%}
-        <span class="welcome">{{session['fname']}} {{session['lname']}}</span>
-        <span class="welcome">Welcome</span>
+        <span>{{session['fname']}} {{session['lname']}}</span>
+        <span>Welcome</span>
       {% endif %}
 
     </div>
-    <nav>
-      <ul>
-        <li><a href="{{ url_for('books') }}" class="btn">About My books</a></li>
-        <li><a href="{{ url_for('index') }}" class="btn">Home</a></li>
-        {% if session['email'] %}
-          <li><a href="/logout" class="btn">Logout</a></li>
-          <li><a href="{{ url_for('account') }}" class="btn">My account</a></li>
-          <li><a href="{{ url_for('newbook') }}" class="btn">add book</a></li>
-        {% else %}
-          <li><a href="{{ url_for('signup') }}" class="btn">Sign up</a></li>
-          <li><a href="{{ url_for('login') }}" class="btn">Login</a></li>
-        {% endif %}
-      </ul>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="{{ url_for('index') }}">home</a>
+        </div>
+
+        <ul class="nav navbar-nav">
+          <li><a href="{{ url_for('books') }}" class="btn">About My books</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          {% if session['email'] %}
+            <li><a href="/logout" class="btn">Logout</a></li>
+            <li><a href="{{ url_for('account') }}">My account</a></li>
+            <li><a href="{{ url_for('newbook') }}">Add book</a></li>
+          {% else %}
+             <li><a href="{{ url_for('signup') }}">Sign up</a></li>
+             <li><a href="{{ url_for('login') }}">Login</a></li>
+          {% endif %}
+        </ul>
+      </div>
+
     </nav>
     {% block content %}
     {% endblock %}

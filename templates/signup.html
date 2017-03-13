@@ -1,8 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  <main class="container signup-section">
-    <h3>Create an account</h3>
+    <h1>Create an account</h1>
     <div class="section-form">
       <form method="POST" action="/signup">
         {{ form.hidden_tag() }}
@@ -57,5 +56,4 @@
         {{ form.submit(class="btn-primary") }}
       </form>
     </div>
-  </main>
 {% endblock %}

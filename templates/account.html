@@ -1,11 +1,10 @@
 {% extends "layout.html" %}
 
 {% block content %}
-  <main class="hero-section">
     <div class="container">
-
-    <h1>My Account</h1>
-      {{session['email']}}
+      <h1>My Account</h1>
+        <p>
+          {{session['email']}}
+        </p>
     </div>
-  </main>
 {% endblock %}
