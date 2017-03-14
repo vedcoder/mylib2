@@ -22,3 +22,11 @@ class NewBookForm(Form):
     link = StringField('Amazon link',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
     price = StringField('Price',validators=[DataRequired("Please enter the price of the book")])
     submit = SubmitField('Add')
+
+class NewToyForm(Form):
+    name = StringField('Name',validators=[DataRequired("Please enter the name of the toy(full name)")])
+    brand = StringField('Brand',validators=[DataRequired("Please enter the brand of the toy ")])
+    description = StringField('Description',validators=[DataRequired("Please enter some description of the toy(about 50 words)")])
+    link = StringField('Amazon link',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
+    price = StringField('Price',validators=[DataRequired("Please enter the price of the toy")])
+    submit = SubmitField('Add')

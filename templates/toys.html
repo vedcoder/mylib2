@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>All toys</h1>
+    <div class="alltoys">
+      {% for toy in toys %}
+        <div class="toy">
+          <p1>{{ toy.name }}</p1>
+          <p2>{{ toy.brand }}</p2>
+          <p3>{{ toy.description }}</p3>
+          <p4>{{ toy.price }}</p4>
+          <a href="{{ toy.link }}" target="_blank">Go to amazon </a>
+        </div>
+      {% endfor %}
+    </div>
+{% endblock %}

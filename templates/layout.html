@@ -2,6 +2,7 @@
 <html>
   <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">#
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,10 +16,12 @@
 
         <ul class="nav navbar-nav">
           <li><a href="{{ url_for('books') }}"><span class="glyphicon glyphicon-book"></span> Books</a></li>
+          <li><a href="{{ url_for('toys') }}"><span class="glyphicon glyphicon-send"></span> Toys</a></li>          
         </ul>
         <ul class="nav navbar-nav navbar-right">
           {% if session['email'] %}
             <li><a href="{{ url_for('newbook') }}"><span class="glyphicon glyphicon-book"></span> Add book</a></li>
+            <li><a href="{{ url_for('newtoy') }}"><span class="glyphicon glyphicon-send"></span> Add toy</a></li>
             <li><a href="{{ url_for('account') }}"><span class="glyphicon glyphicon-user"></span> My account</a></li>
             <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
           {% else %}
@@ -29,8 +32,15 @@
       </div>
 
     </nav>
-    {% block content %}
-    {% endblock %}
-
-  </body>
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer class="footer navbar navbar-inverse navbar-fixed-bottom">
+      <a class="up-arrow" href="#" data-toggle="tooltip" title="" data-original-title="TO TOP">
+        <span class="glyphicon glyphicon-chevron-up"></span>
+      </a><br><br>
+      <p>Viditgupta©</p>
+    </footer>
+    </body>
 </html>

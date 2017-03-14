@@ -1,31 +1,15 @@
 {% extends "layout.html" %}
-
 {% block content %}
-  <div class="container">
-
-    <h1>Abouts my books</h1>
-    <p>I have lots of books.Some comic's and some are knowledge ones.I have almost read every book I have.</p>
+    <h1>All books</h1>
     <div class="allbooks">
       {% for book in books %}
         <div class="book">
           <p1>{{ book.name }}</p1>
-
-
           <p2>{{ book.author }}</p2>
-
-
           <p3>{{ book.story }}</p3>
-
-
           <p4>{{ book.price }}</p4>
-
-
           <a href="{{ book.link }}" target="_blank">Go to amazon </a>
         </div>
-
-
       {% endfor %}
     </div>
-
-  </div>
 {% endblock %}

@@ -38,3 +38,19 @@ class Book(db.Model):
     self.story = story
     self.price = price
     self.link = link
+
+class Toy(db.Model):
+  __tablename__ = 'toys'
+  id = db.Column(db.Integer, primary_key = True)
+  name = db.Column(db.String(50))
+  brand = db.Column(db.String(50))
+  description = db.Column(db.String(500))
+  price = db.Column(db.Numeric(precision=5, scale=2))
+  link = db.Column(db.String(400))
+
+  def __init__(self, name, brand, description, price, link ):
+    self.name = name
+    self.brand = brand
+    self.description = description
+    self.price = price
+    self.link = link

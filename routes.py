@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
-from model import db, User, Book
-from forms import SignupForm, LoginForm, NewBookForm
+from model import db, User, Book, Toy
+from forms import SignupForm, LoginForm, NewBookForm, NewToyForm
 
 
 app = Flask(__name__)
@@ -85,13 +85,34 @@ def newbook():
         if form.validate() == False:
             return render_template("newbook.html", form=form)
         else:
-            print(form.price.data)
             newbook = Book(form.name.data, form.author.data, form.story.data, form.price.data, form.link.data)
             db.session.add(newbook)
             db.session.commit()
             return redirect(url_for('books'))
     elif request.method == "GET":
         return render_template("newbook.html",form=form)
+
+@app.route("/newtoy",methods=["GET", "POST"])
+def newtoy():
+    form = NewToyForm()
+
+    if request.method == "POST":
+        if form.validate() == False:
+            return render_template("newtoy.html", form=form)
+        else:
+            newtoy = Toy(form.name.data, form.brand.data, form.description.data, form.price.data, form.link.data)
+            db.session.add(newtoy)
+            db.session.commit()
+            return redirect(url_for('toys'))
+    elif request.method == "GET":
+        return render_template("newtoy.html",form=form)
+
+@app.route("/toys")
+def toys():
+  toys = db.session.query(Toy).all()
+  return render_template("toys.html",toys=toys)
+
+
 
 if __name__ == "__main__":
   app.run(debug=True)
