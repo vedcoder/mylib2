@@ -1,3 +1,15 @@
+# Install HomeBrew
+`xcode-select --install`
+`ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
+`brew doctor`
+`brew install caskroom/cask/brew-cask`
+
+# Install Git
+`brew install git`
+
+# Install Pip
+`brew install pip`
+
 # Setup Databaase
 # Install MySQL
 `brew install mysql`
@@ -7,7 +19,7 @@
 # Create Database
 `mysql -uroot`
 
-# Run commands form db.py
+# Run commands form db.sql
 
 # Install Python Modules
 `sudo pip install flask`
