@@ -1,9 +1,9 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h1>Create an account</h1>
+    <h1>Edit an account</h1>
 
-      <form method="POST" action="/signup" class="form-horizontal">
+      <form method="POST" action="/editaccount" class="form-horizontal">
         {{ form.hidden_tag() }}
         <div class="form-group">
           <label class="control-label col-sm-2" for="email">{{ form.firstname.label }}</label>
@@ -15,6 +15,7 @@
           {% endif %}
 
           {{ form.firstname }}
+
         </div>
 
         <div class="form-group">
@@ -37,17 +38,6 @@
           {% endif %}
 
           {{ form.email }}
-        </div>
-
-        <div class="form-group">
-          <label class="control-label col-sm-2" for="email">{{ form.password.label }}</label>
-          {% if form.password.errors %}
-            {% for error in form.password.errors %}
-              <p class="error-message">{{ error }}</p>
-            {% endfor %}
-          {% endif %}
-
-          {{ form.password }}
         </div>
 
         <div class="col-sm-offset-2 col-sm-10">

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from model import db, User, Book, Toy
-from forms import SignupForm, LoginForm, NewBookForm, NewToyForm
+from forms import SignupForm, LoginForm, NewBookForm, NewToyForm, EditAccountForm
 
 
 app = Flask(__name__)
@@ -29,12 +29,10 @@ def signup():
     if form.validate() == False:
       return render_template('signup.html', form=form)
     else:
-      newuser = User(form.first_name.data, form.last_name.data, form.email.data, form.password.data)
+      newuser = User(form.firstname.data, form.lastname.data, form.email.data, form.password.data)
       db.session.add(newuser)
       db.session.commit()
-
-      session['email'] = newuser.email
-      return redirect(url_for('account'))
+      return redirect(url_for('login'))
 
   elif request.method == "GET":
     return render_template("signup.html",form=form)
@@ -56,8 +54,6 @@ def login():
       user = User.query.filter_by(email=email).first()
       if user is not None and user.check_password(password):
         session['email'] = form.email.data
-        session['fname'] = user.firstname
-        session['lname'] = user.lastname
 
         return redirect(url_for('account'))
       else:
@@ -75,7 +71,9 @@ def logout():
 def account():
   if 'email' not in session:
       return redirect (url_for("login"))
-  return render_template("account.html")
+  else:
+      user = User.query.filter_by(email=session['email']).first()
+      return render_template("account.html",user=user)
 
 @app.route("/newbook",methods=["GET", "POST"])
 def newbook():
@@ -112,6 +110,26 @@ def toys():
   toys = db.session.query(Toy).all()
   return render_template("toys.html",toys=toys)
 
+@app.route("/editaccount", methods=["GET", "POST"])
+def editaccount():
+  if 'email' in session:
+      user = User.query.filter_by(email=session['email']).first()
+      form = EditAccountForm(obj=user)
+      if request.method == "POST":
+        if form.validate() == False:
+          return render_template('editaccount.html', form=form)
+        else:
+           print("tyu")
+           user.email=form.email.data
+           user.firstname=form.firstname.data
+           user.lastname=form.lastname.data
+           db.session.commit()
+           session['email'] = form.email.data           
+           return redirect(url_for('account'))
+      elif request.method == "GET":
+        return render_template("editaccount.html",form=form)
+  else:
+      return redirect (url_for("login"))
 
 
 if __name__ == "__main__":

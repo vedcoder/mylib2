@@ -3,6 +3,17 @@
 {% block content %}
       <h1>My Account</h1>
         <p>
-          {{session['email']}}
+          {{user.email}}
         </p>
+        <p>
+          {{user.firstname}}
+        </p>
+        <p>
+          {{user.lastname}}
+        </p>
+        <div class="col-sm-offset-2 col-sm-10">
+          <a href="{{ url_for('editaccount') }}" class="btn btn-info" role="button">Edit</a>
+        </div>
+
+
 {% endblock %}
