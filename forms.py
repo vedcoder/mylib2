@@ -1,6 +1,6 @@
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, SubmitField, IntegerField, SelectField
-from wtforms.validators import DataRequired, Email, Length
+from wtforms import StringField, PasswordField, SubmitField, IntegerField, SelectField, ValidationError
+from wtforms.validators import DataRequired, Email, Length, EqualTo
 
 
 class SignupForm(Form):
@@ -15,6 +15,14 @@ class EditAccountForm(Form):
     lastname = StringField('Last name',validators=[DataRequired("Please enter last name")])
     email = StringField('Email',validators=[DataRequired("Please enter email"),Email("Please enter your email address.")])
     submit = SubmitField('Sign up')
+
+
+class ChangePasswordForm(Form):
+    oldpassword = PasswordField('Old Password',validators=[DataRequired("Please enter your Old Password"),Length(min=6, message="Passwords must be 6 characters or more.")])
+    newpassword = PasswordField('New Password',validators=[DataRequired("Please enter your New Password"),Length(min=6, message="Passwords must be 6 characters or more.")])
+    confirmpassword = PasswordField('Confirm Password',validators=[DataRequired("Please comfirm your Password"),Length(min=6, message="Passwords must be 6 characters or more."),EqualTo('newpassword',message="password must match")])
+    submit = SubmitField('Change Password')
+
 
 class LoginForm(Form):
   email = StringField('Email', validators=[DataRequired("Please enter your email address."), Email("Please enter your email address.")])

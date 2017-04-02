@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from model import db, User, Book, Toy
-from forms import SignupForm, LoginForm, NewBookForm, NewToyForm, EditAccountForm
+from forms import SignupForm, LoginForm, NewBookForm, NewToyForm, EditAccountForm, ChangePasswordForm
 
 
 app = Flask(__name__)
@@ -119,15 +119,38 @@ def editaccount():
         if form.validate() == False:
           return render_template('editaccount.html', form=form)
         else:
-           print("tyu")
            user.email=form.email.data
            user.firstname=form.firstname.data
            user.lastname=form.lastname.data
            db.session.commit()
-           session['email'] = form.email.data           
+           session['email'] = form.email.data
            return redirect(url_for('account'))
       elif request.method == "GET":
         return render_template("editaccount.html",form=form)
+  else:
+      return redirect (url_for("login"))
+
+@app.route("/changepassword", methods=["GET", "POST"])
+def changepassword():
+  error=None
+  if 'email' in session:
+      user = User.query.filter_by(email=session['email']).first()
+      form = ChangePasswordForm()
+      if request.method == "POST":
+        if form.validate() == False:
+          return render_template('changepassword.html', form=form)
+        else:
+          oldpassword = form.oldpassword.data
+          newpassword = form.newpassword.data
+          if user is  None or not user.check_password(oldpassword):
+              error="check your old password"
+              return render_template('changepassword.html', form=form, error=error)
+          else:
+             user.password = newpassword
+             db.session.commit()
+             return redirect (url_for("account"))
+      elif request.method == "GET":
+        return render_template("changepassword.html",form=form)
   else:
       return redirect (url_for("login"))
 
