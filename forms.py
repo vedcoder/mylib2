@@ -34,6 +34,7 @@ class NewBookForm(Form):
     author = StringField('Author',validators=[DataRequired("Please enter the author of the book ")])
     story = StringField('Story line',validators=[DataRequired("Please enter the storyline of the book")])
     link = StringField('Amazon link',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
+    image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])
     price = StringField('Price',validators=[DataRequired("Please enter the price of the book")])
     submit = SubmitField('Add')
 

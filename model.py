@@ -31,13 +31,15 @@ class Book(db.Model):
   story = db.Column(db.String(100))
   price = db.Column(db.Numeric(precision=5, scale=2))
   link = db.Column(db.String(400))
+  image = db.Column(db.String(400))
 
-  def __init__(self, name, author, story, price, link ):
+  def __init__(self, name, author, story, price, link, image ):
     self.name = name
     self.author = author
     self.story = story
     self.price = price
     self.link = link
+    self.image = image
 
 class Toy(db.Model):
   __tablename__ = 'toys'

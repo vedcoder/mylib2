@@ -4,11 +4,13 @@
     <div class="allbooks">
       {% for book in books %}
         <div class="book">
-          <p1>{{ book.name }}</p1>
-          <p2>{{ book.author }}</p2>
-          <p3>{{ book.story }}</p3>
-          <p4>{{ book.price }}</p4>
-          <a href="{{ book.link }}" target="_blank">Go to amazon </a>
+          <ul>
+            <li><p class="title">{{ book.name }}</p></li>
+            <li><img src="{{book.image}}" class="img-circle"  alt="{{ book.name }}" height="304" width="304"></li>
+            <li><p class="title">{{ book.author }}</p></li>
+            <li><p class="title">{{ book.story }}   {{ book.price }}</p></li>
+            <li><a href="{{ book.link }}" target="_blank" class="title">Go to amazon </a></li>
+          </ul>
         </div>
       {% endfor %}
     </div>
