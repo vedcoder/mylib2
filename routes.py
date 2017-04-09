@@ -98,7 +98,7 @@ def newtoy():
         if form.validate() == False:
             return render_template("newtoy.html", form=form)
         else:
-            newtoy = Toy(form.name.data, form.brand.data, form.description.data, form.price.data, form.link.data)
+            newtoy = Toy(form.name.data, form.brand.data, form.description.data, form.price.data, form.link.data, form.image.data)
             db.session.add(newtoy)
             db.session.commit()
             return redirect(url_for('toys'))

@@ -49,10 +49,13 @@ class Toy(db.Model):
   description = db.Column(db.String(500))
   price = db.Column(db.Numeric(precision=5, scale=2))
   link = db.Column(db.String(400))
+  image = db.Column(db.String(400))
 
-  def __init__(self, name, brand, description, price, link ):
+
+  def __init__(self, name, brand, description, price, link, image):
     self.name = name
     self.brand = brand
     self.description = description
     self.price = price
     self.link = link
+    self.image = image

@@ -56,6 +56,16 @@
 
         {{ form.link }}
       </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">{{ form.image.label }}</label>
+        {% if form.image.errors %}
+          {% for error in form.image.errors %}
+            <p class="error-message">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+
+        {{ form.image }}
+      </div>
 
       <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn btn-default">Submit</button>

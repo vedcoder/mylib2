@@ -1,14 +1,27 @@
 {% extends "layout.html" %}
 {% block content %}
-    <h1>All toys</h1>
-    <div class="alltoys">
+    <h1>All Toys</h1>
+    <div id="products" class="row list-group">
       {% for toy in toys %}
-        <div class="toy">
-          <p1>{{ toy.name }}</p1>
-          <p2>{{ toy.brand }}</p2>
-          <p3>{{ toy.description }}</p3>
-          <p4>{{ toy.price }}</p4>
-          <a href="{{ toy.link }}" target="_blank">Go to amazon </a>
+        <div class="item  col-xs-4 col-lg-4">
+            <div class="toy">
+              <img class="group list-group-image img-circle" src="{{toy.image}}" class="img-circle"  alt="{{ toy.name }}" height="304" width="304"/>
+              <div class="caption">
+                    <h4 class="group inner list-group-item-heading">
+                        {{ toy.name }} - {{ toy.brand }}</h4>
+                    <p class="group inner list-group-item-text">
+                        {{ toy.description }}</p>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <p class="lead">
+                                {{ toy.price }}</p>
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <a class="btn btn-success" href="{{ toy.link }}" target="_blank">Go to Amazon</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
       {% endfor %}
     </div>

@@ -43,5 +43,6 @@ class NewToyForm(Form):
     brand = StringField('Brand',validators=[DataRequired("Please enter the brand of the toy ")])
     description = StringField('Description',validators=[DataRequired("Please enter some description of the toy(about 50 words)")])
     link = StringField('Amazon link',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
+    image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])    
     price = StringField('Price',validators=[DataRequired("Please enter the price of the toy")])
     submit = SubmitField('Add')
