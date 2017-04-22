@@ -1,5 +1,5 @@
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, SubmitField, IntegerField, SelectField, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, IntegerField, SelectField, ValidationError, HiddenField
 from wtforms.validators import DataRequired, Email, Length, EqualTo
 
 
@@ -37,6 +37,17 @@ class NewBookForm(Form):
     image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])
     price = StringField('Price',validators=[DataRequired("Please enter the price of the book")])
     submit = SubmitField('Add')
+
+class EditBookForm(Form):
+    id = HiddenField("id")
+    name = StringField('Name',validators=[DataRequired("Please enter the name of the book(full name)")])
+    author = StringField('Author',validators=[DataRequired("Please enter the author of the book ")])
+    story = StringField('Story line',validators=[DataRequired("Please enter the storyline of the book")])
+    link = StringField('Amazon link',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
+    image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])
+    price = StringField('Price',validators=[DataRequired("Please enter the price of the book")])
+    submit = SubmitField('Edit')
+
 
 class NewToyForm(Form):
     name = StringField('Name',validators=[DataRequired("Please enter the name of the toy(full name)")])

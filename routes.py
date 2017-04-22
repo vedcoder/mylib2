@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from model import db, User, Book, Toy
-from forms import SignupForm, LoginForm, NewBookForm, NewToyForm, EditAccountForm, ChangePasswordForm
+from forms import SignupForm, LoginForm, NewBookForm, NewToyForm, EditAccountForm, ChangePasswordForm, EditBookForm
 
 
 app = Flask(__name__)
@@ -29,6 +29,10 @@ def signup():
     if form.validate() == False:
       return render_template('signup.html', form=form)
     else:
+      user = User.query.filter_by(email=form.email.data).first()
+      if user is not None:
+        print("user is in i don't know",user.email)
+        return render_template('signup.html', form=form, error="user already exists")
       newuser = User(form.firstname.data, form.lastname.data, form.email.data, form.password.data)
       db.session.add(newuser)
       db.session.commit()
@@ -89,6 +93,32 @@ def newbook():
             return redirect(url_for('books'))
     elif request.method == "GET":
         return render_template("newbook.html",form=form)
+
+@app.route("/editbook", methods=["GET", "POST"])
+def editbook():
+  if 'email' in session:
+      print("in el")
+      form = EditBookForm()
+      if request.method == "POST":
+        if form.validate() == False:
+          return render_template('editbook.html', form=form)
+        else:
+          id = form.id.data
+          book = Book.query.filter_by(id=id).first()
+          book.name=form.name.data
+          book.author=form.author.data
+          book.story=form.story.data
+          book.price=form.price.data
+          book.link=form.link.data
+          book.image=form.image.data
+          db.session.commit()
+          return redirect(url_for('books'))
+      elif request.method == "GET":
+        book = Book.query.filter_by(id=request.args['id']).first()
+        form = EditBookForm(obj=book)
+        return render_template("editbook.html",form=form)
+  else:
+      return redirect (url_for("login"))        
 
 @app.route("/newtoy",methods=["GET", "POST"])
 def newtoy():
