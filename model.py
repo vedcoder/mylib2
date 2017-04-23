@@ -8,14 +8,23 @@ class User(db.Model):
   id = db.Column(db.Integer, primary_key = True)
   firstname = db.Column(db.String(50))
   lastname = db.Column(db.String(400))
-  email = db.Column(db.String(120), unique=True)
+  email = db.Column(db.String(120), unique = True)
   pwdhash = db.Column(db.String(180))
+  mobile = db.Column(db.String(20))
+  society = db.Column(db.String(100))
+  tower = db.Column(db.String(10))
+  flat = db.Column(db.String(10))
 
-  def __init__(self, firstname, lastname, email, password):
+  def __init__(self, firstname, lastname, email, password, mobile, society, tower, flat):
     self.firstname = firstname.title()
     self.lastname = lastname.title()
     self.email = email.lower()
     self.set_password(password)
+    self.mobile = mobile.title()
+    self.society = society.title()
+    self.tower = tower.title()
+    self.flat = flat.title()
+
 
   def set_password(self, password):
     self.pwdhash = generate_password_hash(password)

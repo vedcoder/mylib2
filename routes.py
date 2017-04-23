@@ -33,7 +33,7 @@ def signup():
       if user is not None:
         print("user is in i don't know",user.email)
         return render_template('signup.html', form=form, error="user already exists")
-      newuser = User(form.firstname.data, form.lastname.data, form.email.data, form.password.data)
+      newuser = User(form.firstname.data, form.lastname.data, form.email.data, form.password.data, form.mobile.data, form.society.data, form.tower.data, form.flat.data)
       db.session.add(newuser)
       db.session.commit()
       return redirect(url_for('login'))
@@ -138,7 +138,6 @@ def newtoy():
 @app.route("/edittoy", methods=["GET", "POST"])
 def edittoy():
   if 'email' in session:
-      print("in el")
       form = EditToyForm()
       if request.method == "POST":
         if form.validate() == False:
@@ -153,7 +152,7 @@ def edittoy():
           toy.link=form.link.data
           toy.image=form.image.data
           db.session.commit()
-          return redirect(url_for('books'))
+          return redirect(url_for('toys'))
       elif request.method == "GET":
         toy = Toy.query.filter_by(id=request.args['id']).first()
         form = EditToyForm(obj=toy)
@@ -178,6 +177,11 @@ def editaccount():
            user.email=form.email.data
            user.firstname=form.firstname.data
            user.lastname=form.lastname.data
+           user.mobile=form.mobile.data
+           user.society=form.society.data
+           user.tower=form.tower.data
+           user.flat=form.flat.data
+
            db.session.commit()
            session['email'] = form.email.data
            return redirect(url_for('account'))

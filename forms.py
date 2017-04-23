@@ -8,13 +8,22 @@ class SignupForm(Form):
     lastname = StringField('Last name',validators=[DataRequired("Please enter last name")])
     email = StringField('Email',validators=[DataRequired("Please enter email"),Email("Please enter your email address.")])
     password = PasswordField('Password',validators=[DataRequired("Please enter Password"),Length(min=6, message="Passwords must be 6 characters or more.")])
+    mobile = StringField('Mobile',validators=[DataRequired("Please enter mobile number"),Length(min=10, message="Mobile must be 10 characters or more.")])
+    society = StringField('society',validators=[DataRequired("Please enter society ")])
+    tower = StringField('tower',validators=[DataRequired("Please enter tower ")])
+    flat = StringField('flat',validators=[DataRequired("Please enter flat ")])
+
     submit = SubmitField('Sign up')
 
 class EditAccountForm(Form):
     firstname = StringField('First name',validators=[DataRequired("Please enter first name")])
     lastname = StringField('Last name',validators=[DataRequired("Please enter last name")])
     email = StringField('Email',validators=[DataRequired("Please enter email"),Email("Please enter your email address.")])
-    submit = SubmitField('Sign up')
+    mobile = StringField('Mobile',validators=[DataRequired("Please enter mobile number"),Length(min=10, message="Mobile must be 10 characters or more.")])
+    society = StringField('society',validators=[DataRequired("Please enter society ")])
+    tower = StringField('tower',validators=[DataRequired("Please enter tower ")])
+    flat = StringField('flat',validators=[DataRequired("Please enter flat ")])
+    submit = SubmitField('Save')
 
 
 class ChangePasswordForm(Form):

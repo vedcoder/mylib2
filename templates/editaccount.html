@@ -39,6 +39,48 @@
 
           {{ form.email }}
         </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">{{ form.mobile.label }}</label>
+          {% if form.mobile.errors %}
+            {% for error in form.mobile.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+                  
+          {{ form.mobile }}
+        </div>
+
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">{{ form.society.label }}</label>
+          {% if form.society.errors %}
+            {% for error in form.society.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.society }}
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">{{ form.tower.label }}</label>
+          {% if form.tower.errors %}
+            {% for error in form.tower.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.tower }}
+        </div>
+        <div class="form-group">
+          <label class="control-label col-sm-2" for="email">{{ form.flat.label }}</label>
+          {% if form.flat.errors %}
+            {% for error in form.flat.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
+
+          {{ form.flat }}
+
+        </div>
 
         <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-default">Submit</button>

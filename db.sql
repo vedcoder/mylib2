@@ -5,6 +5,10 @@ USE mylib;
 CREATE TABLE users (id INT NOT NULL AUTO_INCREMENT,
 	firstname VARCHAR(50) NOT NULL, lastname VARCHAR(400) NOT NULL,
     email VARCHAR(120) NOT NULL, pwdhash VARCHAR(180) NOT NULL,
+    mobile VARCHAR(20) NOT NULL,
+    society VARCHAR(100) NOT NULL,
+    tower VARCHAR(10) NOT NULL,
+    flat VARCHAR(10) NOT NULL,
     primary key (id)
     );
 
