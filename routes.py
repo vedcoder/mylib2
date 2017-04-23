@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 from model import db, User, Book, Toy
-from forms import SignupForm, LoginForm, NewBookForm, NewToyForm, EditAccountForm, ChangePasswordForm, EditBookForm
+from forms import SignupForm, LoginForm, NewBookForm, NewToyForm, EditAccountForm, ChangePasswordForm, EditBookForm, EditToyForm
 
 
 app = Flask(__name__)
@@ -134,6 +134,32 @@ def newtoy():
             return redirect(url_for('toys'))
     elif request.method == "GET":
         return render_template("newtoy.html",form=form)
+
+@app.route("/edittoy", methods=["GET", "POST"])
+def edittoy():
+  if 'email' in session:
+      print("in el")
+      form = EditToyForm()
+      if request.method == "POST":
+        if form.validate() == False:
+          return render_template('edittoy.html', form=form)
+        else:
+          id = form.id.data
+          toy = Toy.query.filter_by(id=id).first()
+          toy.name=form.name.data
+          toy.brand=form.brand.data
+          toy.description=form.description.data
+          toy.price=form.price.data
+          toy.link=form.link.data
+          toy.image=form.image.data
+          db.session.commit()
+          return redirect(url_for('books'))
+      elif request.method == "GET":
+        toy = Toy.query.filter_by(id=request.args['id']).first()
+        form = EditToyForm(obj=toy)
+        return render_template("edittoy.html",form=form)
+  else:
+      return redirect (url_for("login"))             
 
 @app.route("/toys")
 def toys():

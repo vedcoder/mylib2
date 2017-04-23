@@ -19,6 +19,11 @@
                         <div class="col-xs-12 col-md-6">
                             <a class="btn btn-success" href="{{ toy.link }}" target="_blank">Go to Amazon</a>
                         </div>
+                        {% if session['email'] %}
+                        <div class="col-xs-12 col-md-6">
+                            <a href="{{ url_for('edittoy',id=toy.id) }}" class="btn btn-info" role="button">Edit</a>
+                        </div> 
+                        {% endif %}
                     </div>
                 </div>
             </div>

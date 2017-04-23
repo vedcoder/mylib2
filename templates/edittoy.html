@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+{% block content %}
+  <h1>Edit a toy</h1>
+    <form method="POST" action="/edittoy" class="form-horizontal">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">{{ form.name.label }}</label>
+        {% if form.name.errors %}
+          {% for error in form.name.errors %}
+            <p class="error-message">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+
+        {{ form.name }}
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">{{ form.brand.label }}</label>
+        {% if form.brand.errors %}
+          {% for error in form.brand.errors %}
+            <p class="error-message">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+
+        {{ form.brand }}
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">{{ form.description.label }}</label>
+        {% if form.description.errors %}
+          {% for error in form.description.errors %}
+            <p class="error-message">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+
+        {{ form.description }}
+      </div>
+
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">{{ form.price.label }}</label>
+        {% if form.price.errors %}
+          {% for error in form.price.errors %}
+            <p class="error-message">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+
+        {{ form.price }}
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">{{ form.link.label }}</label>
+        {% if form.link.errors %}
+          {% for error in form.link.errors %}
+            <p class="error-message">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+
+        {{ form.link }}
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">{{ form.image.label }}</label>
+        {% if form.image.errors %}
+          {% for error in form.image.errors %}
+            <p class="error-message">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+
+        {{ form.image }}
+      </div>
+
+      <div class="col-sm-offset-2 col-sm-10">
+          <button type="submit" class="btn btn-default">Update</button>
+      </div>
+      <div class="col-xs-12 col-md-6">
+         <a href="{{ url_for('toys') }}" class="btn btn-info" role="button">Cancel</a>
+      </div>
+
+    </form>
+
+{% endblock %}
