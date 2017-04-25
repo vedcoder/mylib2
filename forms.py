@@ -44,6 +44,7 @@ class NewBookForm(Form):
     story = StringField('Story line',validators=[DataRequired("Please enter the storyline of the book")])
     link = StringField('Amazon link',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
     image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])
+    new_price = StringField('New Price',validators=[DataRequired("Please enter the new price of the book")])    
     price = StringField('Price',validators=[DataRequired("Please enter the price of the book")])
     submit = SubmitField('Add')
 
@@ -55,6 +56,7 @@ class EditBookForm(Form):
     link = StringField('Amazon link',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
     image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])
     price = StringField('Price',validators=[DataRequired("Please enter the price of the book")])
+    new_price = StringField('New Price',validators=[DataRequired("Please enter the new price of the book")])
     submit = SubmitField('Edit')
 
 

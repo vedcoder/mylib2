@@ -38,17 +38,21 @@ class Book(db.Model):
   name = db.Column(db.String(50))
   author = db.Column(db.String(50))
   story = db.Column(db.String(100))
+  new_price = db.Column(db.Numeric(precision=5, scale=2))  
   price = db.Column(db.Numeric(precision=5, scale=2))
   link = db.Column(db.String(400))
   image = db.Column(db.String(400))
+  #is_sold = db.Column(Boolean, unique=False, default=False)
 
-  def __init__(self, name, author, story, price, link, image ):
+  def __init__(self, name, author, story, new_price, price, link, image, is_sold):
     self.name = name
     self.author = author
     self.story = story
+    self.new_price = new_price
     self.price = price
     self.link = link
     self.image = image
+    self.is_sold = is_sold
 
 class Toy(db.Model):
   __tablename__ = 'toys'

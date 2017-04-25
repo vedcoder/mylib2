@@ -46,6 +46,17 @@
 
         {{ form.price }}
       </div>
+  `   <div class="form-group">
+        <label class="control-label col-sm-2" for="email">{{ form.new_price.label }}</label>
+        {% if form.new_price.errors %}
+          {% for error in form.new_price.errors %}
+            <p class="error-message">{{ error }}</p>
+          {% endfor %}
+        {% endif %}
+
+        {{ form.new_price }}
+      </div>
+
       <div class="form-group">
         <label class="control-label col-sm-2" for="email">{{ form.link.label }}</label>
         {% if form.link.errors %}

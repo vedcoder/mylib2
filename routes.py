@@ -87,7 +87,7 @@ def newbook():
         if form.validate() == False:
             return render_template("newbook.html", form=form)
         else:
-            newbook = Book(form.name.data, form.author.data, form.story.data, form.price.data, form.link.data, form.image.data)
+            newbook = Book(form.name.data, form.author.data, form.story.data, form.price.data, form.new_price.data, form.link.data, form.image.data)
             db.session.add(newbook)
             db.session.commit()
             return redirect(url_for('books'))
@@ -109,6 +109,7 @@ def editbook():
           book.author=form.author.data
           book.story=form.story.data
           book.price=form.price.data
+          book.new_price=form.new_price.data          
           book.link=form.link.data
           book.image=form.image.data
           db.session.commit()

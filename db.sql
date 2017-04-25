@@ -19,6 +19,13 @@ CREATE TABLE books (id INT NOT NULL AUTO_INCREMENT,
     price DECIMAL(5,2) NOT NULL,
     primary key (id)
     );
+
+ALTER TABLE books
+ADD new_price DECIMAL(5,2) NOT NULL;
+
+ALTER TABLE books
+ADD is_sold TINYINT(1) DEFAULT 0;
+
 CREATE TABLE toys (id INT NOT NULL AUTO_INCREMENT,
 	name VARCHAR(50) NOT NULL, brand VARCHAR(50) NOT NULL,
 		description VARCHAR(500) NOT NULL, link VARCHAR(400) NOT NULL,
@@ -26,3 +33,4 @@ CREATE TABLE toys (id INT NOT NULL AUTO_INCREMENT,
 		price DECIMAL(5,2) NOT NULL,
 		primary key (id)
 		);
+

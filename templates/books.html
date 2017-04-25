@@ -13,8 +13,10 @@
                         {{ book.story }}</p>
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
+                            <del class="lead">
+                                {{ book.price }}</del>
                             <p class="lead">
-                                {{ book.price }}</p>
+                                {{ book.new_price }}</p>   
                         </div>
                         <div class="col-xs-12 col-md-6">
                             <a class="btn btn-success" href="{{ book.link }}" target="_blank">Go to Amazon</a>
