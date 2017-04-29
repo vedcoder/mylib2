@@ -67,6 +67,7 @@ class NewToyForm(Form):
     link = StringField('Amazon link',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
     image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])    
     price = StringField('Price',validators=[DataRequired("Please enter the price of the toy")])
+    new_price = StringField('New Price',validators=[DataRequired("Please enter the new price of the book")])    
     submit = SubmitField('Add')
 
 class EditToyForm(Form):
@@ -77,4 +78,5 @@ class EditToyForm(Form):
     link = StringField('Amazon link',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
     image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])    
     price = StringField('Price',validators=[DataRequired("Please enter the price of the toy")])
+    new_price = StringField('New Price',validators=[DataRequired("Please enter the new price of the book")])    
     submit = SubmitField('Add')

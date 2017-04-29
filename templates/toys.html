@@ -13,8 +13,9 @@
                         {{ toy.description }}</p>
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
-                            <p class="lead">
-                                {{ toy.price }}</p>
+                            <del class="lead">
+                                {{ toy.price }}</del>
+                            <p>{{ toy.new_price }}</p>    
                         </div>
                         <div class="col-xs-12 col-md-6">
                             <a class="btn btn-success" href="{{ toy.link }}" target="_blank">Go to Amazon</a>

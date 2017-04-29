@@ -44,7 +44,7 @@ class Book(db.Model):
   image = db.Column(db.String(400))
   #is_sold = db.Column(Boolean, unique=False, default=False)
 
-  def __init__(self, name, author, story, new_price, price, link, image, is_sold):
+  def __init__(self, name, author, story, new_price, price, link, image,):
     self.name = name
     self.author = author
     self.story = story
@@ -52,7 +52,7 @@ class Book(db.Model):
     self.price = price
     self.link = link
     self.image = image
-    self.is_sold = is_sold
+   # self.is_sold = is_sold
 
 class Toy(db.Model):
   __tablename__ = 'toys'
@@ -60,6 +60,7 @@ class Toy(db.Model):
   name = db.Column(db.String(50))
   brand = db.Column(db.String(50))
   description = db.Column(db.String(500))
+  new_price = db.Column(db.Numeric(precision=5, scale=2))    
   price = db.Column(db.Numeric(precision=5, scale=2))
   link = db.Column(db.String(400))
   image = db.Column(db.String(400))
@@ -69,6 +70,7 @@ class Toy(db.Model):
     self.name = name
     self.brand = brand
     self.description = description
+    self.new_price = new_price    
     self.price = price
     self.link = link
     self.image = image
