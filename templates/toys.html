@@ -25,6 +25,11 @@
                             <a href="{{ url_for('edittoy',id=toy.id) }}" class="btn btn-info" role="button">Edit</a>
                         </div> 
                         {% endif %}
+                        {% if (toy.is_sold) %}
+                        <div class="col-xs-12 col-md-6">
+                            <img src="{{ url_for('static', filename='images/sold.png') }}" height="50" width="50"/>
+                         </div>    
+                        {% endif %}
                     </div>
                 </div>
             </div>

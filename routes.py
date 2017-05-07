@@ -87,7 +87,7 @@ def newbook():
         if form.validate() == False:
             return render_template("newbook.html", form=form)
         else:
-            newbook = Book(form.name.data, form.author.data, form.story.data, form.price.data, form.new_price.data, form.link.data, form.image.data)
+            newbook = Book(form.name.data, form.author.data, form.story.data, form.price.data, form.new_price.data, form.link.data, form.image.data, form.is_sold.data)
             db.session.add(newbook)
             db.session.commit()
             return redirect(url_for('books'))
@@ -105,13 +105,14 @@ def editbook():
         else:
           id = form.id.data
           book = Book.query.filter_by(id=id).first()
-          book.name=form.name.data
-          book.author=form.author.data
-          book.story=form.story.data
-          book.price=form.price.data
-          book.new_price=form.new_price.data          
-          book.link=form.link.data
-          book.image=form.image.data
+          book.name = form.name.data
+          book.author = form.author.data
+          book.story = form.story.data
+          book.price = form.price.data
+          book.new_price = form.new_price.data          
+          book.link = form.link.data
+          book.image = form.image.data
+          book.is_sold = form.is_sold.data
           db.session.commit()
           return redirect(url_for('books'))
       elif request.method == "GET":
@@ -129,7 +130,7 @@ def newtoy():
         if form.validate() == False:
             return render_template("newtoy.html", form=form)
         else:
-            newtoy = Toy(form.name.data, form.brand.data, form.description.data, form.price.data, form.new_price.data, form.link.data, form.image.data)
+            newtoy = Toy(form.name.data, form.brand.data, form.description.data, form.price.data, form.new_price.data, form.link.data, form.image.data, form.is_sold.data)
             db.session.add(newtoy)
             db.session.commit()
             return redirect(url_for('toys'))
@@ -146,13 +147,14 @@ def edittoy():
         else:
           id = form.id.data
           toy = Toy.query.filter_by(id=id).first()
-          toy.name=form.name.data
-          toy.brand=form.brand.data
-          toy.description=form.description.data
-          toy.price=form.price.data
-          toy.new_price=form.new_price.data          
-          toy.link=form.link.data
-          toy.image=form.image.data
+          toy.name = form.name.data
+          toy.brand = form.brand.data
+          toy.description = form.description.data
+          toy.price = form.price.data
+          toy.new_price = form.new_price.data          
+          toy.link = form.link.data
+          toy.image = form.image.data
+          toy.is_sold = form.is_sold.data
           db.session.commit()
           return redirect(url_for('toys'))
       elif request.method == "GET":

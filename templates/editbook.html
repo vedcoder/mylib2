@@ -66,15 +66,26 @@
 
         {{ form.link }}
       </div>
-      <label class="control-label col-sm-2" for="email">{{ form.image.label }}</label>
-        {% if form.image.errors %}
-          {% for error in form.image.errors %}
-            <p class="error-message">{{ error }}</p>
-          {% endfor %}
-        {% endif %}
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">{{ form.image.label }}</label>
+          {% if form.image.errors %}
+            {% for error in form.image.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
 
         {{ form.image }}
+      </div>  
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">{{ form.is_sold.label }}</label>
+          {% if form.is_sold.errors %}
+            {% for error in form.is_sold.errors %}
+              <p class="error-message">{{ error }}</p>
+            {% endfor %}
+          {% endif %}
 
+          {{ form.is_sold }}
+      </div>
       <div class="col-sm-offset-2 col-sm-10">
           <button type="submit" class="btn btn-default">Update</button>
       </div>

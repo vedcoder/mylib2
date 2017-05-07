@@ -1,5 +1,6 @@
 from flask.ext.sqlalchemy import SQLAlchemy
 from werkzeug import generate_password_hash, check_password_hash
+from sqlalchemy import Table, Column, Numeric, Integer, String, Boolean
 
 db = SQLAlchemy()
 
@@ -42,9 +43,9 @@ class Book(db.Model):
   price = db.Column(db.Numeric(precision=5, scale=2))
   link = db.Column(db.String(400))
   image = db.Column(db.String(400))
-  #is_sold = db.Column(Boolean, unique=False, default=False)
+  is_sold = db.Column(Boolean, unique=False, default=False)
 
-  def __init__(self, name, author, story, new_price, price, link, image,):
+  def __init__(self, name, author, story, new_price, price, link, image, is_sold):
     self.name = name
     self.author = author
     self.story = story
@@ -52,7 +53,7 @@ class Book(db.Model):
     self.price = price
     self.link = link
     self.image = image
-   # self.is_sold = is_sold
+    self.is_sold = is_sold
 
 class Toy(db.Model):
   __tablename__ = 'toys'
@@ -64,9 +65,10 @@ class Toy(db.Model):
   price = db.Column(db.Numeric(precision=5, scale=2))
   link = db.Column(db.String(400))
   image = db.Column(db.String(400))
+  is_sold = db.Column(Boolean, unique=False, default=False)
 
 
-  def __init__(self, name, brand, description, price, link, image):
+  def __init__(self, name, brand, description, new_price, price, link, image, is_sold):
     self.name = name
     self.brand = brand
     self.description = description
@@ -74,3 +76,4 @@ class Toy(db.Model):
     self.price = price
     self.link = link
     self.image = image
+    self.is_sold = is_sold

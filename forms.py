@@ -1,5 +1,5 @@
 from flask_wtf import Form
-from wtforms import StringField, PasswordField, SubmitField, IntegerField, SelectField, ValidationError, HiddenField
+from wtforms import StringField, PasswordField, SubmitField, IntegerField, SelectField, ValidationError, HiddenField, BooleanField
 from wtforms.validators import DataRequired, Email, Length, EqualTo
 
 
@@ -46,6 +46,7 @@ class NewBookForm(Form):
     image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])
     new_price = StringField('New Price',validators=[DataRequired("Please enter the new price of the book")])    
     price = StringField('Price',validators=[DataRequired("Please enter the price of the book")])
+    is_sold = BooleanField('Sold', validators=[])
     submit = SubmitField('Add')
 
 class EditBookForm(Form):
@@ -57,6 +58,7 @@ class EditBookForm(Form):
     image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])
     price = StringField('Price',validators=[DataRequired("Please enter the price of the book")])
     new_price = StringField('New Price',validators=[DataRequired("Please enter the new price of the book")])
+    is_sold = BooleanField('Sold', validators=[])
     submit = SubmitField('Edit')
 
 
@@ -67,7 +69,8 @@ class NewToyForm(Form):
     link = StringField('Amazon link',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
     image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])    
     price = StringField('Price',validators=[DataRequired("Please enter the price of the toy")])
-    new_price = StringField('New Price',validators=[DataRequired("Please enter the new price of the book")])    
+    new_price = StringField('New Price',validators=[DataRequired("Please enter the new price of the book")]) 
+    is_sold = BooleanField('Sold', validators=[])   
     submit = SubmitField('Add')
 
 class EditToyForm(Form):
@@ -78,5 +81,9 @@ class EditToyForm(Form):
     link = StringField('Amazon link',validators=[DataRequired("Please enter the link to amazon website to buy this product")])
     image = StringField('Image link',validators=[DataRequired("Please enter the link to the picture of the book")])    
     price = StringField('Price',validators=[DataRequired("Please enter the price of the toy")])
-    new_price = StringField('New Price',validators=[DataRequired("Please enter the new price of the book")])    
+    new_price = StringField('New Price',validators=[DataRequired("Please enter the new price of the book")])
+    is_sold = BooleanField('Sold', validators=[])
     submit = SubmitField('Add')
+
+
+
